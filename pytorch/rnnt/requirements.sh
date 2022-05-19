@@ -4,8 +4,7 @@ export DEBIAN_FRONTEND=noninteractive && \
     apt-get install -y --no-install-recommends numactl && \
     rm -rf /var/lib/apt/lists/*
 
-COMMIT_SHA=f546575109111c455354861a0567c8aa794208a2 && \
-    git clone https://github.com/HawkAaron/warp-transducer deps/warp-transducer && \
+git clone https://github.com/HawkAaron/warp-transducer deps/warp-transducer && \
     cd deps/warp-transducer && \
     git checkout $COMMIT_SHA && \
     sed -i 's/set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -gencode arch=compute_30,code=sm_30 -O2")/#set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -gencode arch=compute_30,code=sm_30 -O2")/g' CMakeLists.txt && \
@@ -31,7 +30,7 @@ pip install --extra-index-url https://developer.download.nvidia.com/compute/redi
 
 # smddp: install a specific version of apex that works with dlc pytorch image
 pip uninstall --yes apex
-cd /root && rm -rf apex && git clone https://github.com/NVIDIA/apex && cd apex && git checkout 59d2f7ac2385f20105513cdc76010f996f731af0 && python setup.py install --cuda_ext --cpp_ext --transducer --deprecated_fused_adam --distributed_lamb
+cd /root && rm -rf apex && git clone https://github.com/NVIDIA/apex && cd apex && python setup.py install --cuda_ext --cpp_ext --transducer --deprecated_fused_adam --distributed_lamb
 
 pip install --no-cache --disable-pip-version-check -U -r /workspace/rnnt/requirements.txt
 
@@ -39,3 +38,4 @@ pip install --no-cache --disable-pip-version-check -U -r /workspace/rnnt/require
 mkdir /sentencepieces && cp /shared/SMDDP-Examples/pytorch/rnnt/librispeech1023* /sentencepieces
 
 pip install nvtx
+
