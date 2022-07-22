@@ -29,9 +29,9 @@ COMMIT_SHA=f546575109111c455354861a0567c8aa794208a2 && \
 # smddp: dali dataloader
 pip install --extra-index-url https://developer.download.nvidia.com/compute/redist --upgrade nvidia-dali-cuda110
 
-# smddp: install a specific version of apex that works with dlc pytorch image
-pip uninstall --yes apex
-cd /root && rm -rf apex && git clone https://github.com/NVIDIA/apex && cd apex && git checkout 59d2f7ac2385f20105513cdc76010f996f731af0 && python setup.py install --cuda_ext --cpp_ext --transducer --deprecated_fused_adam --distributed_lamb
+# install apex
+#pip uninstall --yes apex
+#cd /root && rm -rf apex && git clone https://github.com/NVIDIA/apex && cd apex && python setup.py install --cuda_ext --cpp_ext --transducer --deprecated_fused_adam --distributed_lamb
 
 pip install --no-cache --disable-pip-version-check -U -r /workspace/rnnt/requirements.txt
 
