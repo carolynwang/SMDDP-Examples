@@ -30,8 +30,8 @@ COMMIT_SHA=f546575109111c455354861a0567c8aa794208a2 && \
 pip install --extra-index-url https://developer.download.nvidia.com/compute/redist --upgrade nvidia-dali-cuda110
 
 # install apex
-#pip uninstall --yes apex
-#cd /root && rm -rf apex && git clone https://github.com/NVIDIA/apex && cd apex && python setup.py install --cuda_ext --cpp_ext --transducer --deprecated_fused_adam --distributed_lamb
+pip uninstall --yes apex
+cd /root && rm -rf apex && git clone https://github.com/NVIDIA/apex && cd apex && python setup.py install --cuda_ext --cpp_ext --transducer --deprecated_fused_adam --distributed_lamb
 
 pip install --no-cache --disable-pip-version-check -U -r /workspace/rnnt/requirements.txt
 
